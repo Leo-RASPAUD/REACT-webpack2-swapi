@@ -5,7 +5,6 @@ const config = {
     entry: path.resolve(__dirname, './public/src/main/main.js'),
 
     output: {
-        path: path.resolve(__dirname, './dist/assets'),
         filename: 'index.js',
         publicPath: '/assets',
     },
