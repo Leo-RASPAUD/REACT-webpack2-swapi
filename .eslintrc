@@ -1,0 +1,53 @@
+{
+    extends: "airbnb",
+    globals: {
+    fetch: false,
+    window: true,
+    document: true
+    },
+    rules: {
+    no-underscore-dangle: 0,
+    max-len: [
+            2,
+            200
+        ],
+    indent: [
+            2,
+            4
+        ],
+    react/jsx-indent: [
+            2,
+            4
+        ],
+    react/jsx-indent-props: [
+            2,
+            4
+        ],
+    linebreak-style: 0,
+    import/no-extraneous-dependencies: [
+            0,
+            {
+    devDependencies: true
+            }
+        ],
+    react/prefer-stateless-function: [
+            0,
+            {
+    ignorePureComponents: true
+            }
+        ],
+    react/jsx-filename-extension: [
+            1,
+            {
+    extensions: [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+    react/forbid-prop-types: [
+            0,
+            {}
+        ]
+    }
+}
