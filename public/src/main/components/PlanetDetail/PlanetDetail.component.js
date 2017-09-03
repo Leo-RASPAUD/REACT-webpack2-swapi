@@ -5,7 +5,7 @@ import Card, { CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Icon from 'material-ui/Icon';
 import PlanetDetailStyle from './PlanetDetail.style';
-import renderIcon from '../utils';
+import utils from '../utils';
 
 class PlanetDetail extends React.Component {
 
@@ -38,10 +38,10 @@ class PlanetDetail extends React.Component {
                         <Typography component="h5">
                             {`${this.props.details.diameter} km`}
                         </Typography>
-                        {renderIcon('Climate', 'cloud_queue', 'accent', this.props.details.climate)}
-                        {renderIcon('Population', 'accessibility', 'accent', this.props.details.population)}
-                        {renderIcon('Terrain', 'landscape', 'accent', this.props.details.terrain)}
-                        {renderIcon('Orbital period', 'query_builder', 'accent', this.props.details.orbital_period)}
+                        {utils.renderDisabledIconTypography('Climate', 'cloud_queue', 'accent', this.props.details.climate)}
+                        {utils.renderDisabledIconTypography('Population', 'accessibility', 'accent', this.props.details.population)}
+                        {utils.renderDisabledIconTypography('Terrain', 'landscape', 'accent', this.props.details.terrain)}
+                        {utils.renderDisabledIconTypography('Orbital period', 'query_builder', 'accent', this.props.details.orbital_period)}
                     </CardContent>
                 </Card> : noContentYet);
     }

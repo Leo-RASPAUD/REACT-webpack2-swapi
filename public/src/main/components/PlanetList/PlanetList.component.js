@@ -4,8 +4,8 @@ import { CircularProgress } from 'material-ui/Progress';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import Icon from 'material-ui/Icon';
-import IconButton from 'material-ui/IconButton';
 import PlanetListStyle from './PlanetList.style';
+import utils from '../utils';
 
 const styles = theme => ({
     root: {
@@ -81,20 +81,8 @@ class PlanetList extends React.Component {
         return (
             <div>
                 <div className="display-flex-row">
-                    <IconButton
-                        color="accent"
-                        onClick={this.getPreviousPage}
-                        disabled={this.state.page === 1 || this.state.loading}
-                    >
-                        <Icon>navigate_before</Icon>
-                    </IconButton>
-                    <IconButton
-                        color="accent"
-                        onClick={this.getNextPage}
-                        disabled={this.state.loading}
-                    >
-                        <Icon>navigate_next</Icon>
-                    </IconButton>
+                    {utils.renderIconButton('accent', this.getPreviousPage, 'navigate_before', this.state.page === 1 || this.state.loading)}
+                    {utils.renderIconButton('accent', this.getNextPage, 'navigate_next', this.state.loading)}
                     {this.state.loading ? <CircularProgress size={45} color="accent" /> : null}
                 </div>
                 {this.renderPlanets()}
