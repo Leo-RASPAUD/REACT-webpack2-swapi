@@ -41,7 +41,7 @@ class PlanetDetail extends React.Component {
                         {utils.renderDisabledIconTypography('Climate', 'cloud_queue', 'accent', this.props.details.climate)}
                         {utils.renderDisabledIconTypography('Population', 'accessibility', 'accent', this.props.details.population)}
                         {utils.renderDisabledIconTypography('Terrain', 'landscape', 'accent', this.props.details.terrain)}
-                        {utils.renderDisabledIconTypography('Orbital period', 'query_builder', 'accent', this.props.details.orbital_period)}
+                        {utils.renderDisabledIconTypography('Orbital period', 'query_builder', 'accent', `${this.props.details.orbital_period} hours`)}
                     </CardContent>
                 </Card> : noContentYet);
     }

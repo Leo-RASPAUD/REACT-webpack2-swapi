@@ -13,7 +13,7 @@ const renderDisabledIconTypography = (tooltip, icon, color, prop) => (
     <Typography>
         <IconButton color={color} >
             <div disabled data-tip data-for={tooltip}>
-                <Icon data-tip="hello world" >{icon}</Icon>
+                <Icon>{icon}</Icon>
             </div>
         </IconButton>
         <span style={contentAfterIcon}>{prop}</span>
