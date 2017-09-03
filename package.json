@@ -6,7 +6,9 @@
   "author": "Leo-RASPAUD <leo.raspaud@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --hot"
+    "watch": "./node_modules/.bin/webpack-dev-server --hot",
+    "build": "./node_modules/.bin/webpack --env=prod -p --config ./webpack.prod.config.babel.js --progress --colors",
+    "start": "yarn build && node server.js"
   },
   "babel": {
     "presets": [
@@ -23,6 +25,7 @@
     "babel-register": "^6.24.1",
     "css-loader": "^0.28.1",
     "eslint-loader": "^1.7.1",
+    "express": "^4.15.4",
     "file-loader": "^0.11.2",
     "material-design-icons": "^3.0.1",
     "material-ui": "^v1.0.0-beta.8",

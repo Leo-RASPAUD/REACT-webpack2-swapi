@@ -17,7 +17,15 @@ const cssLoaderRule = {
 
 const fontLoaderRule = {
     test: /\.(ttf|woff|woff2)$/,
-    loader: 'file-loader',
+    use: [
+        {
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]',
+                publicPath: 'assets/',
+            },
+        },
+    ],
 };
 
 const eslintLoaderRule = {
