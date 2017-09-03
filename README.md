@@ -1,5 +1,8 @@
 # REACT-webpack2-swapi
 
+## Demo
+http://react-webpack2-swapi.herokuapp.com/#/home
+
 ## Description
 This repository has been created for an interview.<br/>
 Simple react + webpack2 front interacting with swapi.

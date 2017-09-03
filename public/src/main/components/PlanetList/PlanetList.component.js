@@ -81,8 +81,18 @@ class PlanetList extends React.Component {
         return (
             <div>
                 <div className="display-flex-row">
-                    {utils.renderIconButton('accent', this.getPreviousPage, 'navigate_before', this.state.page === 1 || this.state.loading)}
-                    {utils.renderIconButton('accent', this.getNextPage, 'navigate_next', this.state.loading)}
+                    {utils.renderIconButton({
+                        tooltip: 'Previous page',
+                        action: this.getPreviousPage,
+                        icon: 'navigate_before',
+                        condition: this.state.page === 1 || this.state.loading,
+                    })}
+                    {utils.renderIconButton({
+                        tooltip: 'Next page',
+                        action: this.getNextPage,
+                        icon: 'navigate_next',
+                        condition: this.state.loading,
+                    })}
                     {this.state.loading ? <CircularProgress size={45} color="accent" /> : null}
                 </div>
                 {this.renderPlanets()}
