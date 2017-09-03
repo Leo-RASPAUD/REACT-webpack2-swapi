@@ -17,7 +17,7 @@ $ yarn install
 ```
 ## Usage
 ``` 
-$ yarn watch
+$ yarn start
 ```
 
 ## Tests
