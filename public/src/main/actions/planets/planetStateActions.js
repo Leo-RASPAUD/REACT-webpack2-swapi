@@ -9,7 +9,18 @@ const receiveGetAllPlanets = planets => ({
     planets,
 });
 
+const requestLoadPlanetDetail = () => ({
+    type: planetStates.REQUEST.LOAD_PLANET_DETAIL,
+});
+
+const receiveLoadPlanetDetail = planetDetail => ({
+    type: planetStates.RECEIVE.LOAD_PLANET_DETAIL,
+    planetDetail,
+});
+
 export default {
     requestGetAllPlanets,
     receiveGetAllPlanets,
+    requestLoadPlanetDetail,
+    receiveLoadPlanetDetail,
 };

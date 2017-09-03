@@ -1,14 +1,28 @@
 import planetService from '../../services/planetService';
 import state from './planetStateActions';
 
-const getAllPlanets = () => (dispatch) => {
-    dispatch(state.requestGetAllPlanets());
-    return planetService.getAllPlanets()
+const loadPlanetDetail = planetUrl => (dispatch) => {
+    dispatch(state.requestLoadPlanetDetail());
+    return planetService.loadPlanetDetail(planetUrl)
         .then((data) => {
             if (data.status === 200) {
                 return data.json();
             }
-            return data;
+            return {};
+        })
+        .then((planetDetail) => {
+            dispatch(state.receiveLoadPlanetDetail(planetDetail));
+        });
+};
+
+const getPlanets = page => (dispatch) => {
+    dispatch(state.requestGetAllPlanets());
+    return planetService.getPlanets(page)
+        .then((data) => {
+            if (data.status === 200) {
+                return data.json();
+            }
+            return { results: [] };
         })
         .then((planets) => {
             dispatch(state.receiveGetAllPlanets(planets));
@@ -16,5 +30,6 @@ const getAllPlanets = () => (dispatch) => {
 };
 
 export default {
-    getAllPlanets,
+    getPlanets,
+    loadPlanetDetail,
 };

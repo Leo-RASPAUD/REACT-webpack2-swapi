@@ -2,14 +2,20 @@
 import states from '../actions/planets/planetStates';
 
 const planet = (state = {}, action) => {
-    switch (action) {
+    switch (action.type) {
         case states.RECEIVE.GET_ALL_PLANETS:
-            return state;
-        case states.REQUEST.GET_ALL_PLANETS:
             return {
                 ...state,
-                planets: action.planets,
+                data: action.planets,
             };
+            case states.RECEIVE.LOAD_PLANET_DETAIL:
+            return {
+                ...state,
+                planetDetail: action.planetDetail,
+            };
+        case states.REQUEST.LOAD_PLANET_DETAIL:
+        case states.REQUEST.GET_ALL_PLANETS:
+            return state;
         default:
             return state;
     }
