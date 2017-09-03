@@ -10,6 +10,7 @@ This application runs on multiple platforms. It has been developped using Win10 
 ## System requirements
 - Yarn
 - Webpack2
+- Node 6 or newer
 
 ## Installation 
 ``` 
