@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = 8081;
+const PORT = process.env.PORT || 8081;
 
 app.use('/', express.static(path.join(__dirname, './public/index.html')));
 app.use('/assets', express.static(path.join(__dirname, './assets')));
