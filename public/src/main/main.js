@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import thunkMiddleware from 'redux-thunk';
 import createHistory from 'history/createHashHistory';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import swapiReact from './reducers/rootReducer';
@@ -13,6 +13,7 @@ import App from './containers/App/App.container';
 
 import '../assets/materialIcons.css';
 import '../assets/swapi-react.css';
+import '../assets/stars.css';
 
 const history = createHistory();
 injectTapEventPlugin();
@@ -28,13 +29,19 @@ const store = createStore(
     compose(...composeFunctions),
 );
 
+const theme = createMuiTheme({
+    palette: {
+        type: 'dark',
+    },
+});
+
 render(
     <Provider store={store}>
-        <MuiThemeProvider>
-            <ConnectedRouter history={history}>
+        <ConnectedRouter history={history}>
+            <MuiThemeProvider theme={theme}>
                 <App />
-            </ConnectedRouter>
-        </MuiThemeProvider>
+            </MuiThemeProvider>
+        </ConnectedRouter>
     </Provider>,
     document.getElementById('root'),
 );

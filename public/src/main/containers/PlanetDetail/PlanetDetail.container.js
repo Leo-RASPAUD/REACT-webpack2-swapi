@@ -5,6 +5,7 @@ import PlanetDetail from '../../components/PlanetDetail/PlanetDetail.component';
 const mapStateToProps = state =>
     ({
         details: state.planet.planetDetail,
+        loading: state.planet.loading,
     });
 
 

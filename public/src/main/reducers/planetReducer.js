@@ -12,8 +12,14 @@ const planet = (state = {}, action) => {
             return {
                 ...state,
                 planetDetail: action.planetDetail,
+                loading: false,
             };
         case states.REQUEST.LOAD_PLANET_DETAIL:
+            return {
+                ...state,
+                planetDetail: null,
+                loading: true,
+            };
         case states.REQUEST.GET_ALL_PLANETS:
             return state;
         default:

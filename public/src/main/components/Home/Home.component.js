@@ -2,15 +2,10 @@ import React from 'react';
 import PlanetList from '../../containers/PlanetList/PlanetList.container';
 import PlanetDetail from '../../containers/PlanetDetail/PlanetDetail.container';
 
-const style = {
-    display: 'flex',
-    flexDirection: 'row',
-};
-
 class Home extends React.Component {
     render() {
         return (
-            <div style={style}>
+            <div className="display-flex-row">
                 <PlanetList />
                 <PlanetDetail />
             </div>

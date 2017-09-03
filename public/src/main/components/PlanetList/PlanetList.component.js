@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CircularProgress from 'material-ui/CircularProgress';
-import { List, ListItem } from 'material-ui/List';
-import { blue500 } from 'material-ui/styles/colors';
+import { CircularProgress } from 'material-ui/Progress';
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import { withStyles } from 'material-ui/styles';
+import Icon from 'material-ui/Icon';
 import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
 import PlanetListStyle from './PlanetList.style';
+
+const styles = theme => ({
+    root: {
+        background: theme.palette.background.paper,
+    },
+});
 
 class PlanetList extends React.Component {
 
@@ -50,24 +56,22 @@ class PlanetList extends React.Component {
     }
 
     renderPlanets() {
-        const { planetState } = this.props;
-        const leftIcon = <i className="material-icons" style={PlanetListStyle.iconStyle}>star</i>;
-        let listItem;
+        const { planetState, classes } = this.props;
+        let listItems;
         if (planetState.data) {
-            listItem = planetState.data.results.map(planet =>
-                <ListItem
-                    style={PlanetListStyle.listStyle}
-                    key={planet.name}
-                    primaryText={planet.name}
-                    leftIcon={leftIcon}
-                    onClick={this.props.loadPlanetDetail(planet.url)}
-                />,
+            listItems = planetState.data.results.map(planet =>
+                <ListItem button key={planet.name} onClick={this.props.loadPlanetDetail(planet.url)}>
+                    <ListItemIcon>
+                        <Icon color="accent">star</Icon>
+                    </ListItemIcon>
+                    <ListItemText primary={planet.name} />
+                </ListItem>,
             );
         }
         return (
-            <div style={PlanetListStyle.planetListStyle}>
+            <div style={PlanetListStyle.planetListStyle} className={classes.root}>
                 <List>
-                    {listItem}
+                    {listItems}
                 </List>
             </div>
         );
@@ -75,28 +79,25 @@ class PlanetList extends React.Component {
 
     render() {
         return (
-            <div style={PlanetListStyle.circularProgress}>
+            <div>
                 <div className="display-flex-row">
                     <IconButton
-                        tooltip="Previous page"
-                        color={blue500}
+                        color="accent"
                         onClick={this.getPreviousPage}
-                        disabled={this.state.page === 1}
+                        disabled={this.state.page === 1 || this.state.loading}
                     >
-                        <FontIcon className="material-icons">navigate_before</FontIcon>
+                        <Icon>navigate_before</Icon>
                     </IconButton>
                     <IconButton
-                        tooltip="Get more!"
-                        color={blue500}
+                        color="accent"
                         onClick={this.getNextPage}
+                        disabled={this.state.loading}
                     >
-                        <FontIcon className="material-icons">navigate_next</FontIcon>
+                        <Icon>navigate_next</Icon>
                     </IconButton>
-                    {this.state.loading ? <span style={PlanetListStyle.circularProgress}><CircularProgress size={30} /></span> : null}
+                    {this.state.loading ? <CircularProgress size={45} color="accent" /> : null}
                 </div>
-                <ul>
-                    {this.renderPlanets()}
-                </ul>
+                {this.renderPlanets()}
             </div>
         );
     }
@@ -106,7 +107,8 @@ PlanetList.propTypes = {
     getPlanets: PropTypes.func.isRequired,
     loadPlanetDetail: PropTypes.func.isRequired,
     planetState: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
 };
 
 
-export default PlanetList;
+export default withStyles(styles)(PlanetList);

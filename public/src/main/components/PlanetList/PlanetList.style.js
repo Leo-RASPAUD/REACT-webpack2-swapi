@@ -1,7 +1,8 @@
-import { blue500 } from 'material-ui/styles/colors';
+import blue from 'material-ui/colors/blue';
 
 const planetListStyle = {
     width: '200px',
+    height: '550px',
 };
 
 const listStyle = {
@@ -9,7 +10,7 @@ const listStyle = {
 };
 
 const iconStyle = {
-    color: blue500,
+    color: blue,
 };
 
 const planetList = {
@@ -17,7 +18,6 @@ const planetList = {
 };
 
 const circularProgress = {
-    marginTop: '8px',
 };
 
 export default {
