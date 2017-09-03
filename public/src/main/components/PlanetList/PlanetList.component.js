@@ -87,6 +87,7 @@ class PlanetList extends React.Component {
                         icon: 'navigate_before',
                         condition: this.state.page === 1 || this.state.loading,
                     })}
+                    <span style={{ lineHeight: '46px', color: 'white' }}>Page {this.state.page}</span>
                     {utils.renderIconButton({
                         tooltip: 'Next page',
                         action: this.getNextPage,
